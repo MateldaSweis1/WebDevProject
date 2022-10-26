@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PlantDetails from "./PlantDetails";
 import { Link } from "react-router-dom";
-import "./styles.css";
+import "../Styling/PlantMain.css";
 
 const Home = () => {
 
@@ -16,13 +16,12 @@ const Home = () => {
       <h1>Grow Your Roots</h1>
       <div>
           <Link to="/users">
-            <button>Add Your Plants</button>
+            <button>View Your Plants</button>
           </Link>
         </div>
-      <PlantDetails plants={plants}/>
+      <PlantDetails />
     </section>
     );
   }
 
 export default Home;
-  

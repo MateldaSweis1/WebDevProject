@@ -10,7 +10,7 @@ const Header = () => (
         </div>
         <div>
           <Link to="/users">
-            <button>Add Your Plants</button>
+            <button>View Your Plants</button>
           </Link>
         </div>
     </nav>
