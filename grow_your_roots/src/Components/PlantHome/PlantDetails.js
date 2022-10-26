@@ -3,12 +3,12 @@ import {
   getAllPlants,
   createPlant,
   removePlant
-} from "../Services/CRUDServices";
+} from "../../Services/CRUDServices";
 
 //Plant info component, child componenet of Parent.js
 // Includes the plant information passed down from parent as prop
 // Also includes the button with the onClick callback function
-const PlantBasic = () => {
+const PlantDetails = () => {
 
     const [plants, setPlants] = useState([]);
     const [plant_id, setPlant_id] = useState();
@@ -103,4 +103,4 @@ const PlantBasic = () => {
   );
 };
 
-export default PlantBasic;
+export default PlantDetails;
