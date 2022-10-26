@@ -19,6 +19,7 @@ const PlantDetails = () => {
       getAllPlants().then((response) => {
         // updating plants variable with response from service
         setPlants(response);
+        console.log(plants)
       });
     }, []);
 
@@ -83,7 +84,7 @@ const PlantDetails = () => {
           (plant) => (
             <div class="each" key={plant.get("plant_id")}>
             <h3>{plant.get("plant_id")}</h3>
-            <img src = {plant.get("image")} width="250" height="200" />
+            <img src = {plant.get("image")._url} width="250" height="200" />
             <button onClick="${onPlantClick}" class="collapsible">
               Quick Add
             </button>
