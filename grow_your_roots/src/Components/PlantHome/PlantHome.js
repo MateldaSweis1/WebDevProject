@@ -3,13 +3,9 @@ import PlantDetails from "./PlantDetails";
 import { Link } from "react-router-dom";
 import "../Styling/PlantMain.css";
 
+// Home component
+// Includes header of the homepage, navigation link to the user page, and the PlantDetails component
 const Home = () => {
-
-  const [plants, setPlants] = useState([]);
-
-  useEffect(()=> {
-
-  }, [])
 
   return (
     <section>

@@ -1,5 +1,7 @@
 import React from "react";
 
+// PlantBox component
+// Takes in a single plant as a prop and displays all the information about it
 const PlantBox = (plant) => {
 
     return (
@@ -17,7 +19,7 @@ const PlantBox = (plant) => {
               <li>{plant.plant.get("category")}</li>
               <li>{plant.plant.get("size")}</li>
             </ul>
-            </div>
+        </div>
     )
 }
 
