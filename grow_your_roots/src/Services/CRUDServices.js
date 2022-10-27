@@ -30,12 +30,12 @@ export const getById = (id) => {
   });
 };
 
-// READ operation - get all plants in Parse class Lesson
+// READ operation - get all plants in Parse class Plant
 export const getAllPlants = () => {
   const Plant = Parse.Object.extend("Plant");
   const query = new Parse.Query(Plant);
   return query.find().then((results) => {
-    // returns array of Lesson objects
+    // returns array of Plant objects
     return results;
   });
 };

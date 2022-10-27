@@ -21,7 +21,7 @@ const PlantDetails = () => {
     });
   }, []);
 
-  // const onPlantClick = () => {
+//   const onPlantClick = () => {
   //   alert(`You added a new plant!`);
   // }
 
