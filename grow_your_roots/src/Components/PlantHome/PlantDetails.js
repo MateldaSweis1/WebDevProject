@@ -4,6 +4,7 @@ import {
   createPlant,
   removePlant
 } from "../../Services/CRUDServices";
+import PlantBox from "./PlantBox";
 
 //Plant info component, child componenet of Parent.js
 // Includes the plant information passed down from parent as prop
@@ -81,23 +82,7 @@ const PlantDetails = () => {
       <div>
       {plants.length > 0 && (
         plants.map(
-          (plant) => (
-            <div class="each" key={plant.get("plant_id")}>
-            <h3>{plant.get("plant_id")}</h3>
-            <img src = {plant.get("image")._url} width="250" height="200" />
-            <button onClick="${onPlantClick}" class="collapsible">
-              Quick Add
-            </button>
-            <ul class="plantDetails">
-              <li>{plant.get("light")}</li>
-              <li>{plant.get("water")}</li>
-              <li>{plant.get("fertilizer")}</li>
-              <li>{plant.get("place")}</li>
-              <li>{plant.get("category")}</li>
-              <li>{plant.get("size")}</li>
-            </ul>
-            </div>
-            )
+          (plant) => (<PlantBox plant={plant}/>)
         ))}
       </div>
     </div>
