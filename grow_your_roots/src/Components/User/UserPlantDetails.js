@@ -73,15 +73,7 @@ const UserPlantDetails = () => {
           (plant) => (
             <div class="each" key={plant.get("nickname")}>
             <h3>{plant.get("nickname")}</h3>
-            <img src = {plant.get("image")} width="250" height="200" />
-            <ul class="plantDetails">
-              <li>{plant.get("light")}</li>
-              <li>{plant.get("water")}</li>
-              <li>{plant.get("fertilizer")}</li>
-              <li>{plant.get("place")}</li>
-              <li>{plant.get("category")}</li>
-              <li>{plant.get("size")}</li>
-            </ul>
+      
             <button
                    onClick={(e) => {
                      setRemove(plant.id);
@@ -98,3 +90,5 @@ const UserPlantDetails = () => {
 };
 
 export default UserPlantDetails;
+
+////<img src = {(plant.get("image"))._url} width="250" height="200" />

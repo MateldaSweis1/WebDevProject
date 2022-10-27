@@ -8,9 +8,7 @@ const PlantBox = (plant) => {
         <div class="each" key={plant.plant.get("plant_id")}>
             <h3>{plant.plant.get("plant_id")}</h3>
             <img src = {plant.plant.get("image")._url} width="250" height="200" />
-            <button onClick="${onPlantClick}" class="collapsible">
-              Quick Add
-            </button>
+
             <ul class="plantDetails">
               <li>{plant.plant.get("light")}</li>
               <li>{plant.plant.get("water")}</li>

@@ -16,8 +16,7 @@ const UserPlantForm = ({onChange, onClick}) => {
       <option value="Coleus">Coleus</option>
       <option value="Jade Plant">Jade Plant</option>
       </select><br /><br />
-    Photo of your plant:
-    <input type="file" name="image" /> <br /><br />
+
     <input type="submit" value="Save Plant" onClick={onClick}/>
     </form>
     </div>
@@ -25,3 +24,6 @@ const UserPlantForm = ({onChange, onClick}) => {
 }
 
 export default UserPlantForm;
+
+//  Photo of your plant:
+//  <input type="file" name="image" /> <br /><br />

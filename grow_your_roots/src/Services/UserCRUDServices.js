@@ -1,14 +1,14 @@
 import Parse from "parse";
 
 // CREATE operation - new plant with Name
-export const createUserPlant = (nickname, name, image) => {
+export const createUserPlant = (nickname, name) => {
   console.log("Creating: ", nickname);
   const Plant = Parse.Object.extend("UserPlants");
   const plant = new Plant();
   // using setter to UPDATE the object
   plant.set("nickname", nickname);
   plant.set("plant_id", name);
-  plant.set("image", image);  
+  //plant.set("image"._url, image);
 
   return plant.save().then((result) => {
     // returns new plant object
