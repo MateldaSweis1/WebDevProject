@@ -1,35 +1,27 @@
 import React, { useEffect, useState } from "react";
 import {
-  getAllPlants,
-  createPlant,
-  removePlant
-} from "../../Services/CRUDServices";
+  getAllUserPlants,
+  createUserPlant,
+  removeUserPlant
+} from "../../Services/UserCRUDServices";
+import UserPlantForm from "./UserPlantForm";
 
 //Plant info component, child componenet of Parent.js
 // Includes the plant information passed down from parent as prop
 // Also includes the button with the onClick callback function
-const PlantDetails = () => {
+const UserPlantDetails = () => {
 
     const [plants, setPlants] = useState([]);
-    const [plant_id, setPlant_id] = useState();
+    const [nickname, setNickname] = useState();
     const [numPlants, setNumPlants] = useState(1);
 
     useEffect(() => {
       // Asynchronously loading in the data
-      getAllPlants().then((response) => {
+      getAllUserPlants().then((response) => {
         // updating plants variable with response from service
         setPlants(response);
       });
     }, []);
-
-    // Events up callback function
-    function expandInfo() {
-      // Incrementing the number of plants the user has
-      // Triggered by callback function passed to PlantBasic Component
-      setNumPlants(numPlants + 1);
-      alert("You have " + numPlants + " plant(s)!");
-    };
-
 
 
   // Flags in the state to watch for add/remove updates
@@ -40,8 +32,8 @@ const PlantDetails = () => {
     // are made to the state variables/flags
     useEffect(() => {
       // Check for add flag and make sure plant_id state variable is defined
-      if (plant_id && add) {
-        createPlant(plant_id).then((newPlant) => {
+      if (nickname && add) {
+        createUserPlant(nickname).then((newPlant) => {
           setAdd(false);
           setPlants([...plants, newPlant]);
         });
@@ -49,17 +41,17 @@ const PlantDetails = () => {
 
       // Check if remove state variable is holding an ID
       if (remove.length > 0) {
-        //Filter the old plants list to take out selected lesson
-        const newPlants = plants.filter((plant) => plant.plant_id !== remove);
+        //Filter the old plants list to take out selected plant
+        const newPlants = plants.filter((plant) => plant.id !== remove);
         setPlants(newPlants);
-        removePlant(remove).then(() => {
+        removeUserPlant(remove).then(() => {
           console.log("Removed plant with ID: ", remove);
         });
         // Reset remove state variable
         setRemove("");
       }
-    }, [plant_id, plants, add, remove]);
-/*
+    }, [nickname, plants, add, remove]);
+
     // Handler to handle event passed from child submit button
   const onClickHandler = (e) => {
     e.preventDefault();
@@ -70,23 +62,18 @@ const PlantDetails = () => {
   const onChangeHandler = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    setPlant_id(e.target.value);
+    setNickname(e.target.value);
   };
-*/
+
 
   return (
-    <div>
-      <h1>These are the available plants:</h1>
       <div>
       {plants.length > 0 && (
         plants.map(
           (plant) => (
-            <div class="each" key={plant.get("plant_id")}>
-            <h3>{plant.get("plant_id")}</h3>
+            <div class="each" key={plant.get("nickname")}>
+            <h3>{plant.get("nickname")}</h3>
             <img src = {plant.get("image")} width="250" height="200" />
-            <button onClick="${onPlantClick}" class="collapsible">
-              Quick Add
-            </button>
             <ul class="plantDetails">
               <li>{plant.get("light")}</li>
               <li>{plant.get("water")}</li>
@@ -95,12 +82,19 @@ const PlantDetails = () => {
               <li>{plant.get("category")}</li>
               <li>{plant.get("size")}</li>
             </ul>
+            <button
+                   onClick={(e) => {
+                     setRemove(plant.id);
+                   }}
+                 >
+                   Delete Plant
+                 </button>
             </div>
             )
         ))}
-      </div>
+      <UserPlantForm onClick={onClickHandler} onChange={onChangeHandler}/>
     </div>
   );
 };
 
-export default PlantDetails;
+export default UserPlantDetails;
