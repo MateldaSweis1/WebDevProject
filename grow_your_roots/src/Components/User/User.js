@@ -19,7 +19,7 @@ const UserProfile = () => {
           <UserPlantDetails />
         </div>
         </section>
-      );
+    );
 }
 
 export default UserProfile;
