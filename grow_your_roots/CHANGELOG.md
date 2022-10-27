@@ -9,7 +9,7 @@ All noteable changes to the project are noted in this file
 - Data is also being written to the database based on user input.
 - React routes are being used to correctly adjust the url based on what page the user is on.
 - React links are used to navigate between pages.
-- The user can dynamically add and delete plants.
+- The user can dynamically add and delete plants on the user page.
 
 # Changed
 - The plant data is no longer being stored in a local JSON file. 
@@ -17,3 +17,4 @@ All noteable changes to the project are noted in this file
 
 # Removed
 - The plant data in the JSON file has been removed from the project.
+- The quick add functionality has been removed from the home page since the user can add plants on the user page.
