@@ -13,6 +13,11 @@ const Header = () => (
             <button>View Your Plants</button>
           </Link>
         </div>
+        <div>
+          <Link to="/auth">
+            <button>Log out</button>
+          </Link>
+        </div>
     </nav>
   </div>
 );

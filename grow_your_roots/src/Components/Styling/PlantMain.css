@@ -11,10 +11,7 @@ div {
   display: block;
   margin: auto;
   margin-bottom: 2.7em;
-
-
 }
-
 .collapsible {
   background-color: #99c48b;
   color: #444;
@@ -45,6 +42,19 @@ div {
   color: white;
   float: right;
   margin-left: 0.3125em;
+}
+label{
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  padding: 0.625em;
+  background-color: #ffebb5;
+}
+input{
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  padding: 0.625em;
+  background-color: white;
+  border-radius: 100px;
 }
 
 button {

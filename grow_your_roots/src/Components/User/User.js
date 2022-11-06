@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UserPlantDetails from "./UserPlantDetails";
+import Header from "../Header/Header";
 
 
 
@@ -18,6 +19,7 @@ const UserProfile = () => {
           <h1>These are your plants:</h1>
           <UserPlantDetails />
         </div>
+        <Header />
         </section>
     );
 }
