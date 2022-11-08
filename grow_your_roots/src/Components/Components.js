@@ -7,16 +7,21 @@ import {
 } from "react-router-dom";
 import UserProfile from "./User/User";
 import Home from "./PlantHome/PlantHome";
-import AuthModule from "./Auth/Auth.js";
+import AuthModule from "./Auth/Auth";
 import AuthRegister from "./Auth/AuthRegister";
 import AuthLogin from "./Auth/AuthLogin";
+import ProtectedRoute from "./Auth/ProtectedRoute";
 
 const Components = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/users" element={<UserProfile/>} />
+        <Route path="/" element={
+          <ProtectedRoute path="/" element={Home} /> }
+        />
+        <Route path="/users" element={
+          <ProtectedRoute path="/users" element={UserProfile} /> } 
+        />
         <Route path="/auth" element={<AuthModule />} />
         <Route path="/auth/register" element={<AuthRegister />} />
         <Route path="/auth/login" element={<AuthLogin />} />

@@ -33,7 +33,7 @@ const AuthRegister = () => {
           alert(
             `${userCreated.get("firstName")}, you successfully registered!`
           );
-          navigate.push("/");
+          navigate("/");
         }
         // TODO: redirect user to main app
         setAdd(false);
@@ -72,7 +72,7 @@ const AuthRegister = () => {
           </Link>
         </div>
     </div>
-    
+
   );
 };
 
