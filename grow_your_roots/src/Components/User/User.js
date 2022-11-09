@@ -6,6 +6,8 @@ import Parse from "parse";
 
 const UserProfile = () => {
 
+  // If user is on user page, they are authenticated
+  // Maintain this authentication while they nav to home page
   const goToHome = () => {
     Parse.User.current().authenticated = true;
   }

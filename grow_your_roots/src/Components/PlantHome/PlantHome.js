@@ -9,10 +9,14 @@ import HomeUserFooter from "./HomeUserFooter";
 // Home component
 // Includes header of the homepage, navigation link to the user page, and the PlantDetails component
 const Home = () => {
+
+  // If the user is authenticated already, maintain this authentication and allow
+  // user to access their user page
   const goToUser = () => {
     Parse.User.current().authenticated = true;
   }
 
+  // Different buttons depending on if the user is authenticated or not
   if(Parse.User.current().authenticated) {
     return   (<section>
       <h1>Grow Your Roots</h1>
@@ -25,6 +29,7 @@ const Home = () => {
       <HomeUserFooter />
     </section>)
   } else {
+  // If the user is not authenticated, return the basic home page
   return (
     <section>
       <h1>Grow Your Roots</h1>

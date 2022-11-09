@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Parse from "parse";
 
 const HomeUserFooter = () => {
+    // Logs out a user from the home page if they are already authenticated
     const logOut = () => {
         Parse.User.current().authenticated = false;
     }

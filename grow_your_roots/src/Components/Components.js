@@ -12,6 +12,7 @@ import AuthRegister from "./Auth/AuthRegister";
 import AuthLogin from "./Auth/AuthLogin";
 import ProtectedRoute from "./Auth/ProtectedRoute";
 
+// Root components page that includes all routes and protected routes for the app
 const Components = () => {
   return (
     <Router>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// Basic home page navigation
 const Header = () => (
   <div>
     <nav>
