@@ -9,13 +9,8 @@ const Header = () => (
           </Link>
         </div>
         <div>
-          <Link to="/users">
-            <button>View Your Plants</button>
-          </Link>
-        </div>
-        <div>
           <Link to="/auth">
-            <button>Log out</button>
+            <button>View Your Plants</button>
           </Link>
         </div>
     </nav>
