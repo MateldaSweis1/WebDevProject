@@ -6,14 +6,14 @@ import { checkUser } from "./AuthService";
 const AuthModule = () => {
   const navigate = useNavigate();
 
-  // redirect already authenticated users back to home
+  // redirect already authenticated users back to user page
   useEffect(() => {
     if (checkUser()) {
-      alert("You are already logged in");
-      navigate("/");
+      navigate("/users");
     }
   }, [navigate]);
 
+  // Nav buttons to login or register
   return (
     <div>
       <Link to="/auth/register">

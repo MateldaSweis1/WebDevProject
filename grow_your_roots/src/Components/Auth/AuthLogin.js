@@ -34,6 +34,8 @@ const AuthLogin = () => {
     }
   }, [navigate, currentUser, add]);
 
+
+  // Event handlers for when user is filling out log in form
   const onChangeHandler = (e) => {
     e.preventDefault();
     // console.log(e.target);
