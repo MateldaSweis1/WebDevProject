@@ -38,12 +38,7 @@ const AuthLogin = () => {
 
   const onChangeHandler = (e) => {
     e.preventDefault();
-    //console.log(e.target);
     const { name, value: newValue } = e.target;
-
-    //let newValue = e.target[name]
-    console.log(newValue);
-
     setCurrentUser({
       ...currentUser,
       [name]: newValue
@@ -52,7 +47,6 @@ const AuthLogin = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    //console.log("submitted: ", e.target);
     setAdd(true);
   };
 

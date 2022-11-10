@@ -3,7 +3,7 @@ All noteable changes to the project are noted in this file
 
 # [Unreleased]
 
-# [1.5.0] 11-09-2022
+# [0.3.0] 11-09-2022
 # Added
 - Log in and registration functionality.
 - Accompanying authentication to determine if a user exists or not.
@@ -18,7 +18,23 @@ All noteable changes to the project are noted in this file
 
 # Removed
 
-
-# Bugs
+# Fixed
 - Navigation between home and user pages after the user logs in was not working because user was losing authentication every time they navigated.
-- Added a work around by re-authenticating the user if they are navigating between pages after they are logged in.
+- Added a work around by re-authenticating the user if they are navigating betweeen pages after they are logged in.
+
+# [0.2.0] 10-26-2022
+# Added
+- The newest release includes data being pulled in from a back4app database rather than a local file.
+- Data is also being written to the database based on user input.
+- React routes are being used to correctly adjust the url based on what page the user is on.
+- React links are used to navigate between pages.
+- The user can dynamically add and delete plants on the user page.
+
+# Changed
+- The plant data is no longer being stored in a local JSON file. 
+- html <a> tags were replaced with React links to navigate between pages.
+
+# Removed
+- The plant data in the JSON file has been removed from the project.
+- The quick add functionality has been removed from the home page since the user can add plants on the user page.
+
