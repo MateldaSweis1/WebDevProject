@@ -13,7 +13,19 @@ const UserPlantDetails = () => {
 
     const [plants, setPlants] = useState([]);
     const [nickname, setNickname] = useState();
-    const [numPlants, setNumPlants] = useState(1);
+    const [newUserPlant, setNewUserPlant] = useState({
+      nickname: "",
+      plant_id: "",
+      light: "",
+      water: "",
+      fertilizer: "",
+      place: "",
+      category: "",
+      size: "",
+      plant_owner: ""
+    });
+
+    //const [numPlants, setNumPlants] = useState(1);
 
     useEffect(() => {
       // Asynchronously loading in the data
@@ -28,12 +40,11 @@ const UserPlantDetails = () => {
   const [add, setAdd] = useState(false);
   const [remove, setRemove] = useState("");
 
-  // UseEffect that runs when changes
-    // are made to the state variables/flags
+  // UseEffect that runs when changes are made to the state variables/flags
     useEffect(() => {
       // Check for add flag and make sure plant_id state variable is defined
-      if (nickname && add) {
-        createUserPlant(nickname).then((newPlant) => {
+      if (newUserPlant.nickname && add) {
+        createUserPlant(newUserPlant).then((newPlant) => {
           setAdd(false);
           setPlants([...plants, newPlant]);
         });
@@ -62,18 +73,23 @@ const UserPlantDetails = () => {
   const onChangeHandler = (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    setNickname(e.target.value);
-  };
+    const {name, value: newValue}  = e.target;
 
+    setNewUserPlant({
+      ...newUserPlant,
+      [name]: newValue
+    });
+  };
+  console.log("inputs: ", newUserPlant);
 
   return (
       <div>
       {plants.length > 0 && (
         plants.map(
           (plant) => (
-            <div class="each" key={plant.get("nickname")}>
+            <div className="each" key={plant.get("nickname")}>
             <h3>{plant.get("nickname")}</h3>
-      
+
             <button
                    onClick={(e) => {
                      setRemove(plant.id);
@@ -84,7 +100,7 @@ const UserPlantDetails = () => {
             </div>
             )
         ))}
-      <UserPlantForm onClick={onClickHandler} onChange={onChangeHandler}/>
+      <UserPlantForm newUserPlant={newUserPlant} onClick={onClickHandler} onChange={onChangeHandler}/>
     </div>
   );
 };

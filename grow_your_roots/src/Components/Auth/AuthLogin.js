@@ -42,6 +42,8 @@ const AuthLogin = () => {
     e.preventDefault();
     console.log(e.target);
     const { name, value: newValue } = e.target;
+
+    //let newValue = e.target[name]
     console.log(newValue);
 
     setCurrentUser({
