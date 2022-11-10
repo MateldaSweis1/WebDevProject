@@ -9,6 +9,8 @@ All noteable changes to the project are noted in this file
 - Accompanying authentication to determine if a user exists or not.
 - ProtectedRoutes to the user page so that a user cannot access this page until they are logged in.
 - Log out functionality from the user page and the home page when the user is logged in.
+- Light setting option to User's plant list input form
+- Save plant owner functionality so plant owners are saved when they add a new plant.
 
 # Changed
 - Changed the navigation buttons on the user page to navigate to the home page and allow the user to log out.
@@ -35,3 +37,4 @@ All noteable changes to the project are noted in this file
 # Removed
 - The plant data in the JSON file has been removed from the project.
 - The quick add functionality has been removed from the home page since the user can add plants on the user page.
+
