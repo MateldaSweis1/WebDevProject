@@ -9,6 +9,8 @@ All noteable changes to the project are noted in this file
 - Accompanying authentication to determine if a user exists or not.
 - ProtectedRoutes to the user page so that a user cannot access this page until they are logged in.
 - Log out functionality from the user page and the home page when the user is logged in.
+- Light setting option to User's plant list input form
+- Save plant owner functionality so plant owners are saved when they add a new plant.
 
 # Changed
 - Changed the navigation buttons on the user page to navigate to the home page and allow the user to log out.
@@ -19,4 +21,4 @@ All noteable changes to the project are noted in this file
 
 # Bugs
 - Navigation between home and user pages after the user logs in was not working because user was losing authentication every time they navigated.
-- Added a work around by re-authenticating the user if they are navigating betweeen pages after they are logged in.
+- Added a work around by re-authenticating the user if they are navigating between pages after they are logged in.
