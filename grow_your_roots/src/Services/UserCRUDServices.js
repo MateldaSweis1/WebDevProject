@@ -1,13 +1,30 @@
 import Parse from "parse";
 
+
+
+
 // CREATE operation - new plant with Name
-export const createUserPlant = (nickname, name) => {
-  console.log("Creating: ", nickname);
+export const createUserPlant = (newUserPlant) => {
+  console.log("NewUserPlant being created: ", newUserPlant);
+  console.log("Creating: ", newUserPlant.nickname);
   const Plant = Parse.Object.extend("UserPlants");
   const plant = new Plant();
+
   // using setter to UPDATE the object
-  plant.set("nickname", nickname);
-  plant.set("plant_id", name);
+  plant.set("nickname", newUserPlant.nickname);
+  plant.set("light", newUserPlant.light);
+  plant.set("water", newUserPlant.water);
+  plant.set("fertilizer", newUserPlant.fertiizer);
+  plant.set("place", newUserPlant.place);
+  plant.set("category", newUserPlant.category);
+  plant.set("size", newUserPlant.size);
+  const plantId = newUserPlant.plant_id;
+  plant.set("plant_id", { "__type": "Pointer", "className": "Plant", "objectId": plantId });
+  const locStore = JSON.parse(localStorage.getItem("Parse/FnFsABZT3nmw3g8Tx8Jwl0zeDLS3Yso1tTJ6P78R/currentUser"));
+  const userId = locStore.objectId;
+  plant.set("plant_owner", { "__type": "Pointer", "className": "_User", "objectId": userId });
+
+
   //plant.set("image"._url, image);
 
   return plant.save().then((result) => {

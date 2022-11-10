@@ -6,11 +6,13 @@ import { useNavigate, Link } from "react-router-dom";
 const AuthLogin = () => {
   const navigate = useNavigate();
 
-  // default user var that can be passed down during auth process
+  // redirect already authenticated users back to home
   const [currentUser, setCurrentUser] = useState({
     email: "",
     password: ""
   });
+
+  // flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const AuthLogin = () => {
       loginUser(currentUser).then((userLoggedIn) => {
         if (userLoggedIn) {
           alert(
-            `${userLoggedIn.get("firstName")}, you have successfully logged in!`
+            `${userLoggedIn.get("firstName")}, you successfully logged in!`
           );
           navigate("/users");
         }
@@ -34,13 +36,14 @@ const AuthLogin = () => {
     }
   }, [navigate, currentUser, add]);
 
-
-  // Event handlers for when user is filling out log in form
   const onChangeHandler = (e) => {
     e.preventDefault();
-    // console.log(e.target);
+    //console.log(e.target);
     const { name, value: newValue } = e.target;
-    // console.log(newValue);
+
+    //let newValue = e.target[name]
+    console.log(newValue);
+
     setCurrentUser({
       ...currentUser,
       [name]: newValue
@@ -49,11 +52,10 @@ const AuthLogin = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    // console.log("submitted: ", e.target);
+    //console.log("submitted: ", e.target);
     setAdd(true);
   };
 
-  // Login / register functionality displayed
   return (
     <div>
       <AuthForm
