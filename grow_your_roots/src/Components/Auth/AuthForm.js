@@ -1,9 +1,13 @@
 import React from "react";
 
+
+// Reusable auth form for both log in and registration based on prop based in
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
   return (
     <form onSubmit={onSubmit} autoComplete="off">
+    {/* Checking to see if the user if logging in or registering */}
+    {/* Only display "First Name" and "Last Name" if user is registering*/}
     {!isLogin ? 
     <div className="auth-top">
         <div>

@@ -17,7 +17,6 @@ const AuthLogin = () => {
 
   useEffect(() => {
     if (checkUser()) {
-      alert("You are already logged in");
       navigate("/");
     }
   }, [navigate]);
@@ -30,9 +29,8 @@ const AuthLogin = () => {
           alert(
             `${userLoggedIn.get("firstName")}, you successfully logged in!`
           );
-          navigate("/");
+          navigate("/users");
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }
@@ -40,7 +38,7 @@ const AuthLogin = () => {
 
   const onChangeHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    //console.log(e.target);
     const { name, value: newValue } = e.target;
 
     //let newValue = e.target[name]
@@ -54,7 +52,7 @@ const AuthLogin = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("submitted: ", e.target);
+    //console.log("submitted: ", e.target);
     setAdd(true);
   };
 
