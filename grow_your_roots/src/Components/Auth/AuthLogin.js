@@ -39,9 +39,6 @@ const AuthLogin = () => {
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { name, value: newValue } = e.target;
-
-    let newValue = e.target[name]
-
     setCurrentUser({
       ...currentUser,
       [name]: newValue
