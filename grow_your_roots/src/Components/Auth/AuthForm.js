@@ -8,7 +8,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
     <form onSubmit={onSubmit} autoComplete="off">
     {/* Checking to see if the user if logging in or registering */}
     {/* Only display "First Name" and "Last Name" if user is registering*/}
-    {!isLogin ? 
+    {!isLogin ?
     <div className="auth-top">
         <div>
           <label>First Name</label>
