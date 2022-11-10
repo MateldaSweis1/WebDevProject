@@ -17,7 +17,7 @@ const Home = () => {
   }
 
   // Different buttons depending on if the user is authenticated or not
-  if(Parse.User.current().authenticated) {
+  if(Parse.User.current() && Parse.User.current().authenticated) {
     return   (<section>
       <h1>Grow Your Roots</h1>
       <div>
