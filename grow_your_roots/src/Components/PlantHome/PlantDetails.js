@@ -27,7 +27,7 @@ const PlantDetails = () => {
 
   return (
     <div>
-      <h1>These are the available plants:</h1>
+      <h1>Learn about these plants:</h1>
       <div>
       {plants.length > 0 && (
         plants.map(

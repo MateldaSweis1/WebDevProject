@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// Basic home page navigation
 const Header = () => (
   <div>
     <nav>
@@ -9,7 +10,7 @@ const Header = () => (
           </Link>
         </div>
         <div>
-          <Link to="/users">
+          <Link to="/auth">
             <button>View Your Plants</button>
           </Link>
         </div>

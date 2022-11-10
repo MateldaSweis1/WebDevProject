@@ -14,6 +14,6 @@ function App() {
     <Components />
     </div>
   );
-}
+};
 
 export default App;
