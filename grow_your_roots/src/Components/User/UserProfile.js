@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Parse from "parse";
 import { getUser } from "../Auth/AuthService";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import UserPlantDetails from "./UserPlantDetails";
 
 const Profile = () => {
@@ -27,6 +27,11 @@ const Profile = () => {
         </div>
         <div className="ProfileElem">
               <h3>Last Name: {user.lastName}</h3>
+        </div>
+        <div>
+        <Link to="/users">
+            <button>Back</button>
+          </Link>
         </div>
         </section>
     );
