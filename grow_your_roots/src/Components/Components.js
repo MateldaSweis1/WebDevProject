@@ -11,6 +11,7 @@ import AuthModule from "./Auth/Auth";
 import AuthRegister from "./Auth/AuthRegister";
 import AuthLogin from "./Auth/AuthLogin";
 import ProtectedRoute from "./Auth/ProtectedRoute";
+import Profile from "./User/UserProfile";
 
 // Root components page that includes all routes and protected routes for the app
 const Components = () => {
@@ -20,6 +21,9 @@ const Components = () => {
         <Route path="/" element={<Home />} /> 
         <Route path="/users" element={
           <ProtectedRoute path="/users" element={UserProfile} /> } 
+        />
+        <Route path="/users/profile" element={
+          <ProtectedRoute path="/users" element={Profile} /> } 
         />
         <Route path="/auth" element={<AuthModule />} />
         <Route path="/auth/register" element={<AuthRegister />} />
