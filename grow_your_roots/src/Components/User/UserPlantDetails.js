@@ -89,7 +89,6 @@ const UserPlantDetails = () => {
           (plant) => (
             <div className="each" key={plant.get("nickname")}>
             <h3>{plant.get("nickname")}</h3>
-
             <button
                    onClick={(e) => {
                      setRemove(plant.id);

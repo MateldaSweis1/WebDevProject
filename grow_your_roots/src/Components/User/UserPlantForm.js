@@ -16,12 +16,7 @@ const UserPlantForm = ({newUserPlant, onChange, onClick}) => {
       <option value="Coleus">Coleus</option>
       <option value="Jade Plant">Jade Plant</option>
       </select><br /><br />
-    Light:
-    <select name="light" onChange={onChange} value={newUserPlant.light}>
-        <option value="indoor">Indoor</option>
-        <option value="outdoor">Outdoor</option>
-        <option value="either">Either</option>
-    </select><br /><br />
+    
 
     <input type="submit" value="Save Plant" onClick={onClick}/>
     </form>

@@ -1,23 +1,33 @@
 import Parse from "parse";
 
+//import {getById} from "./CRUDServices.js";
 
 
 
 // CREATE operation - new plant with Name
-export const createUserPlant = (newUserPlant) => {
+export const createUserPlant = async (newUserPlant) => {
   console.log("NewUserPlant being created: ", newUserPlant);
   console.log("Creating: ", newUserPlant.nickname);
   const Plant = Parse.Object.extend("UserPlants");
   const plant = new Plant();
 
   // using setter to UPDATE the object
+
+  // Code for getting info related to type of plant owned by user automatically
+  //and storing it in database
+
+  let parseQueryPlantType = new Parse.Query('Plant');
+  parseQueryPlantType.contains('plant_id', newUserPlant.plant_id);
+  const plantTypeInfo = await parseQueryPlantType.find();
+  console.log(plantTypeInfo[0]['attributes']['light']);
+
   plant.set("nickname", newUserPlant.nickname);
-  plant.set("light", newUserPlant.light);
-  plant.set("water", newUserPlant.water);
-  plant.set("fertilizer", newUserPlant.fertiizer);
-  plant.set("place", newUserPlant.place);
-  plant.set("category", newUserPlant.category);
-  plant.set("size", newUserPlant.size);
+  plant.set("light", plantTypeInfo[0]['attributes']['light']);
+  plant.set("water", plantTypeInfo[0]['attributes']['water']);
+  plant.set("fertilizer", plantTypeInfo[0]['attributes']['fertilizer']);
+  plant.set("place", plantTypeInfo[0]['attributes']['place']);
+  plant.set("category", plantTypeInfo[0]['attributes']['category']);
+  plant.set("size", plantTypeInfo[0]['attributes']['size']);
   const plantId = newUserPlant.plant_id;
   plant.set("plant_id", { "__type": "Pointer", "className": "Plant", "objectId": plantId });
   const locStore = JSON.parse(localStorage.getItem("Parse/FnFsABZT3nmw3g8Tx8Jwl0zeDLS3Yso1tTJ6P78R/currentUser"));
