@@ -5,6 +5,7 @@ import {
   removeUserPlant
 } from "../../Services/UserCRUDServices";
 import UserPlantForm from "./UserPlantForm";
+import { Link } from "react-router-dom";
 
 //Plant info component, child componenet of Parent.js
 // Includes the plant information passed down from parent as prop
@@ -97,6 +98,9 @@ const UserPlantDetails = () => {
                  >
                    Delete Plant
                  </button>
+                 <Link to={{pathname:"/users/edit", state: "plant.id"}}>
+                   <button> Edit Plant</button>
+                    </Link>
             </div>
             )
         ))}
@@ -106,5 +110,3 @@ const UserPlantDetails = () => {
 };
 
 export default UserPlantDetails;
-
-////<img src = {(plant.get("image"))._url} width="250" height="200" />

@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from "react";
+import Parse from "parse";
 import { getUser } from "../Auth/AuthService";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+// import UserPlantDetails from "./UserPlantDetails";
 
-const Profile = () => {
+const Profile = (props) => {
 
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState([]);
+    const location = useLocation();
+    //const { from } = location.state;
+    console.log("ID::::::", props.pathname);
 
     useEffect(()=> {
         setUser(getUser());
@@ -27,9 +32,6 @@ const Profile = () => {
               <h3>Last Name: {user.lastName}</h3>
         </div>
         <div>
-        <Link to="/users/profile/edit">
-            <button>Edit</button>
-          </Link>
         <Link to="/users">
             <button>Back</button>
           </Link>

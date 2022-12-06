@@ -12,6 +12,9 @@ import AuthRegister from "./Auth/AuthRegister";
 import AuthLogin from "./Auth/AuthLogin";
 import ProtectedRoute from "./Auth/ProtectedRoute";
 import Profile from "./User/UserProfile";
+import AuthForgotPassword from "./Auth/AuthForgotPassword";
+import UserPlantEdit from "./User/UserPlantEdit";
+import UserProfileEdit from "./User/UserProfileEdit";
 
 // Root components page that includes all routes and protected routes for the app
 const Components = () => {
@@ -23,11 +26,18 @@ const Components = () => {
           <ProtectedRoute path="/users" element={UserProfile} /> } 
         />
         <Route path="/users/profile" element={
-          <ProtectedRoute path="/users" element={Profile} /> } 
+          <ProtectedRoute path="/users/profile" element={Profile} /> } 
+        />
+        <Route path="/users/profile/edit" element={
+          <ProtectedRoute path="/users/profile/edit" element={UserProfileEdit} /> } 
+        />
+        <Route path="/users/edit" element={
+          <ProtectedRoute path="/users/edit" element={UserPlantEdit} /> } 
         />
         <Route path="/auth" element={<AuthModule />} />
         <Route path="/auth/register" element={<AuthRegister />} />
         <Route path="/auth/login" element={<AuthLogin />} />
+        <Route path="/auth/forgotPassword" element={<AuthForgotPassword />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

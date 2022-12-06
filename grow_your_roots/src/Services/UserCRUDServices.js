@@ -52,7 +52,6 @@ export const getAllUserPlants = () => {
     return results;
   });
 };
-/* Might later want to implement an update operation
 // UPDATE operation - update plant by ID
 export const updateUserPlant = (idOld, idNew) => {
   const UserPlants = Parse.Object.extend("UserPlants");
@@ -61,7 +60,6 @@ export const updateUserPlant = (idOld, idNew) => {
     plant.update(idNew);
   });
 };
-*/
 // DELETE operation - remove plant by ID
 export const removeUserPlant = (id) => {
   const UserPlants = Parse.Object.extend("UserPlants");

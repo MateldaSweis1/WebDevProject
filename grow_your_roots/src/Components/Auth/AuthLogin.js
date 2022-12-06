@@ -63,6 +63,11 @@ const AuthLogin = () => {
             <button>Register</button>
           </Link>
         </div>
+        <div>
+          <Link to="/auth/forgotPassword">
+            <button>Forgot Password</button>
+          </Link>
+        </div>
     </div>
   );
 };
