@@ -94,16 +94,3 @@ export const undoEdit = (id) => {
     return false;
   });
 }
-
-export const findEditPlant = () => {
-  const plants = getAllUserPlants();
-  return true;
-  try {
-    const plants = getAllUserPlants();
-    console.log(plants);
-    return true;
-  } catch(error) {
-    alert("Error:", error);
-    return false;
-  }
-}

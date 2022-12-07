@@ -83,9 +83,81 @@ export const getUser = () => {
   return Parse.User.current().attributes;
 }
 
+export const updateUsername = (username) => {
+  console.log(username)
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  console.log(id);
+  return query.get(id).then((user) => {
+    user.set("username", username);
+    user.save();
+    return user;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const updateEmail = (email) => {
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  return query.get(id).then((user) => {
+    user.set("email", email);
+    user.save();
+    return user.get("email");
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const updateFirstName = () => {
+  
+}
+
+export const updateLastName = () => {
+  
+}
+
 export const updateUser = (newUser) => {
-  const user = new Parse.User();
+
+  return updateUsername(newUser.username).then((user)=>{
+    updateEmail(user.attributes.username).then((user) => {
+      return user;
+    })
+    console.log(user.attributes.username);
+    return true;
+  }).catch((error) => {
+    console.log("Error: ", error);
+    return false;
+  })
+
+  // const UserPlants = Parse.Object.extend("UserPlants");
+  // const query = new Parse.Query(UserPlants);
+  const user = Parse.Object.extend("User");
+  const query = new Parse.Query(user);
+
+  return query.get(Parse.User.current().objectId).then((user)=> {
+    //user.set('objectId', Parse.User.current().objectId)
+    user.set('username', newUser.username);
+    user.set('firstName', newUser.firstName);
+    user.set('lastName', newUser.LastName);
+    //user.set('password', Parse.User.current().attributes.password);
+    user.set('email', newUser.email);
+    user.save();
+    return user;
+  }).catch((error)=> {
+    alert("Error: ", error);
+    return false;
+  });
+
+  //const user = new Parse.User();
   const oldUser = getUser();
+
+
+
   user.set('objectId', oldUser.objectId)
   user.set('username', newUser.username);
   user.set('firstName', newUser.firstName);

@@ -83,16 +83,16 @@ const ProfileEdit = () => {
           />
         </div>
         <div className="form-group">
-          <label>Email</label>
+          <label>Username</label>
           <br />
           <input
-            type="email"
+            type="username"
             className="form-control"
             id="email-input"
-            value={tempUser.email}
+            value={tempUser.username}
             onChange={onChange}
-            name="email"
-            placeholder={user.email}
+            name="username"
+            placeholder={user.username}
           />
         </div>
         <div className="form-group">
