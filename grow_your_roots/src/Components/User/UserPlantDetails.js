@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import {
   getAllUserPlants,
   createUserPlant,
-  removeUserPlant
+  removeUserPlant,
+  setEdit
 } from "../../Services/UserCRUDServices";
 import UserPlantForm from "./UserPlantForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //Plant info component, child componenet of Parent.js
 // Includes the plant information passed down from parent as prop
 // Also includes the button with the onClick callback function
 const UserPlantDetails = () => {
 
+    const navigate = useNavigate();
     const [plants, setPlants] = useState([]);
     const [nickname, setNickname] = useState();
     const [newUserPlant, setNewUserPlant] = useState({
@@ -81,7 +83,6 @@ const UserPlantDetails = () => {
       [name]: newValue
     });
   };
-  console.log("inputs: ", newUserPlant);
 
   return (
       <div>
@@ -98,9 +99,12 @@ const UserPlantDetails = () => {
                  >
                    Delete Plant
                  </button>
-                 <Link to={{pathname:"/users/edit", state: "plant.id"}}>
-                   <button> Edit Plant</button>
-                    </Link>
+                 <Link to="/users/edit">
+                   <button onClick={()=> {
+                     const id = plant.id;
+                     setEdit(id)
+                   }}> Edit Plant</button>
+                  </Link>
             </div>
             )
         ))}

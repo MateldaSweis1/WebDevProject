@@ -43,7 +43,6 @@ export const getUsername = (username) => {
   const user = new Parse.User();
   const query = new Parse.Query(user);
   return query.get(username).then((user)=> {
-    console.log(username)
     return true;
   }).catch((error) => {
     alert(`Error: username does not exist`);
@@ -84,11 +83,34 @@ export const getUser = () => {
   return Parse.User.current().attributes;
 }
 
-export const updateUser = (oldUser, newUser) => {
-  const user = Parse.User.current();
-  user.set("username", newUser.username);
-  user.set("firstName", newUser.firstName);
-  user.set("lastName", newUser.LastName);
+export const updateUser = (newUser) => {
+  const user = new Parse.User();
+  const oldUser = getUser();
+  user.set('objectId', oldUser.objectId)
+  user.set('username', newUser.username);
+  user.set('firstName', newUser.firstName);
+  user.set('lastName', newUser.LastName);
+  user.set('password', oldUser.password);
+  user.set('email', newUser.email);
+
+  // try {
+  //   await user.save();
+  //   console.log("HERE::",updatedUser);
+  //   return updatedUser;
+  // } catch (error) {
+  //   alert("Error: ", error);
+  //   return false;
+  // }
+
+
+  return user.save()
+  // .then((updatedUser) => {
+  //   console.log("HERE::",updatedUser);
+  //   return updatedUser;
+  // }).catch((error) => {
+  //   alert("Error", error)
+  //   return null;
+  // })
   // user.set("username", newUser.username);
   // user.set("firstName", newUser.firstName);
   // user.set("lastName", newUser.LastName);

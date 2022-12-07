@@ -1,40 +1,34 @@
 import React, {useEffect, useState} from "react";
-import Parse from "parse";
-import { getUser } from "../Auth/AuthService";
-import { Link, useLocation } from "react-router-dom";
-// import UserPlantDetails from "./UserPlantDetails";
+import { Link } from "react-router-dom";
+import { getAllUserPlants, undoEdit } from "../../Services/UserCRUDServices";
 
-const Profile = (props) => {
+const Profile = () => {
 
-    const [user, setUser] = useState([]);
-    const location = useLocation();
-    //const { from } = location.state;
-    console.log("ID::::::", props.pathname);
+    const [plant, setPlant] = useState([]);
 
     useEffect(()=> {
-        setUser(getUser());
-        console.log(user);
+        getAllUserPlants().then((response) => {
+            setPlant(response.filter((res) => (res.attributes.edit === true)));
+        })
     }, []);
-
+    
     return (
         <section>
-          <h1>My Profile</h1>
-          <div className="ProfileElem">
-              <h3>Username: {user.username}</h3>
-        </div>
-        <div className="ProfileElem"> 
-              <h3>Email: {user.email}</h3>
-        </div>
-        <div className="ProfileElem"> 
-              <h3>First Name: {user.firstName}</h3>
-        </div>
-        <div className="ProfileElem">
-              <h3>Last Name: {user.lastName}</h3>
-        </div>
-        <div>
-        <Link to="/users">
-            <button>Back</button>
-          </Link>
+          <h1>Edit</h1>
+          <div>
+          {plant.length > 0 && (
+        plant.map(
+          (plant) => (
+            <div className="each" key={plant.get("nickname")}>
+            <h3>{plant.get("nickname")}</h3>
+            <Link to="/users">
+                <button onClick={()=> {
+                    undoEdit(plant.id)
+                    }}>Back</button>
+            </Link>
+            </div>
+            )
+        ))}
         </div>
         </section>
     );

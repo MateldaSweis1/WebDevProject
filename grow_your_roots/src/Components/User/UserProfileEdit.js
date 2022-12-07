@@ -9,7 +9,8 @@ const ProfileEdit = () => {
     const [tempUser, setTempUser] = useState({
         firstName: "",
         lastName: "",
-        username: ""
+        username: "",
+        email: ""
     });
 
     useEffect(()=> {
@@ -23,8 +24,9 @@ const ProfileEdit = () => {
             if (tempUser.firstName === "") tempUser.firstName = user.firstName;
             if (tempUser.lastName === "") tempUser.lastName = user.lastName;
             if (tempUser.username === "") tempUser.username = user.username;
+            tempUser.email = tempUser.username;
             console.log(tempUser);
-            updateUser(user, tempUser)
+            updateUser(tempUser);
             // .then((newUser)=> {
             //     if(newUser === user) alert("Success!");
             //     else alert("Failure")

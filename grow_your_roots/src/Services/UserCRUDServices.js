@@ -68,3 +68,42 @@ export const removeUserPlant = (id) => {
     plant.destroy();
   });
 };
+
+export const setEdit = (id) => {
+  const UserPlants = Parse.Object.extend("UserPlants");
+  const query = new Parse.Query(UserPlants);
+  return query.get(id).then((plant) => {
+    plant.set("edit", true);
+    plant.save();
+    return plant.get("edit");
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const undoEdit = (id) => {
+  const UserPlants = Parse.Object.extend("UserPlants");
+  const query = new Parse.Query(UserPlants);
+  return query.get(id).then((plant) => {
+    plant.set("edit", false);
+    plant.save();
+    return true;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const findEditPlant = () => {
+  const plants = getAllUserPlants();
+  return true;
+  try {
+    const plants = getAllUserPlants();
+    console.log(plants);
+    return true;
+  } catch(error) {
+    alert("Error:", error);
+    return false;
+  }
+}
