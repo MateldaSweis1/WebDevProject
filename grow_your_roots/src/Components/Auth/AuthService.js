@@ -106,106 +106,56 @@ export const updateEmail = (email) => {
   return query.get(id).then((user) => {
     user.set("email", email);
     user.save();
-    return user.get("email");
+    return user;
   }).catch((error) => {
     alert("Error: ", error);
     return false;
   });
 }
 
-export const updateFirstName = () => {
-  
+export const updateFirstName = (firstName) => {
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  return query.get(id).then((user) => {
+    user.set("firstName", firstName);
+    user.save();
+    return user;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
 }
 
-export const updateLastName = () => {
-  
+export const updateLastName = (lastName) => {
+  console.log("lastName::::",lastName)
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  console.log(id);
+  return query.get(id).then((user) => {
+    console.log(user)
+    user.set("lastName", lastName);
+    user.save();
+    return user;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
 }
 
 export const updateUser = (newUser) => {
 
   return updateUsername(newUser.username).then((user)=>{
-    updateEmail(user.attributes.username).then((user) => {
-      return user;
+    return updateEmail(newUser.username).then((user) => {
+      return updateFirstName(newUser.firstName).then((user) => {
+        return updateLastName(newUser.lastName).then((user) => {
+          return user;
+        });
+      })
     })
-    console.log(user.attributes.username);
-    return true;
   }).catch((error) => {
     console.log("Error: ", error);
     return false;
   })
-
-  // const UserPlants = Parse.Object.extend("UserPlants");
-  // const query = new Parse.Query(UserPlants);
-  const user = Parse.Object.extend("User");
-  const query = new Parse.Query(user);
-
-  return query.get(Parse.User.current().objectId).then((user)=> {
-    //user.set('objectId', Parse.User.current().objectId)
-    user.set('username', newUser.username);
-    user.set('firstName', newUser.firstName);
-    user.set('lastName', newUser.LastName);
-    //user.set('password', Parse.User.current().attributes.password);
-    user.set('email', newUser.email);
-    user.save();
-    return user;
-  }).catch((error)=> {
-    alert("Error: ", error);
-    return false;
-  });
-
-  //const user = new Parse.User();
-  const oldUser = getUser();
-
-
-
-  user.set('objectId', oldUser.objectId)
-  user.set('username', newUser.username);
-  user.set('firstName', newUser.firstName);
-  user.set('lastName', newUser.LastName);
-  user.set('password', oldUser.password);
-  user.set('email', newUser.email);
-
-  // try {
-  //   await user.save();
-  //   console.log("HERE::",updatedUser);
-  //   return updatedUser;
-  // } catch (error) {
-  //   alert("Error: ", error);
-  //   return false;
-  // }
-
-
-  return user.save()
-  // .then((updatedUser) => {
-  //   console.log("HERE::",updatedUser);
-  //   return updatedUser;
-  // }).catch((error) => {
-  //   alert("Error", error)
-  //   return null;
-  // })
-  // user.set("username", newUser.username);
-  // user.set("firstName", newUser.firstName);
-  // user.set("lastName", newUser.LastName);
-  console.log("NEW::::", user);
-  return newUser;
-
-  // const tempUser = new Parse.User();
-  // const query = new Parse.Query(tempUser);
-  // return query.get(user.id).then((currUser)=> {
-  //   user.set("username", newUser.username);
-  //   user.set("firstName", newUser.firstName);
-  //   user.set("lastName", newUser.LastName);
-  //   console.log("HERE:::::", currUser);
-  //   console.log("ASNAKSLN::::", newUser);
-  // }).catch((error) => {
-  //     alert(`Error: ${error.message}`);
-  //   });
-  // const query = new Parse.Query(user);
-  // return query.get(oldUser).then((user) => {
-  //   user.update(newUser);
-  //   console.log(user);
-  // }).catch((error) => {
-  //   alert(`Error: ${error.message}`);
-  // });;
-
 }
