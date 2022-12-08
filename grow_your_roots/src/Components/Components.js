@@ -38,7 +38,7 @@ const Components = () => {
         <Route path="/auth/register" element={<AuthRegister />} />
         <Route path="/auth/login" element={<AuthLogin />} />
         <Route path="/auth/forgotPassword" element={<AuthForgotPassword />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
     </Router>
   );

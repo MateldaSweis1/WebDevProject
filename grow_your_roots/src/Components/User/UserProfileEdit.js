@@ -100,7 +100,7 @@ const ProfileEdit = () => {
   </form>
         <div>
             <Link to="/users/profile">
-                <button>Cancel</button>
+                <button>Back</button>
             </Link>
         </div>
         </section>

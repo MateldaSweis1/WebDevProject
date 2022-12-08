@@ -13,7 +13,7 @@ const Home = () => {
   // If the user is authenticated already, maintain this authentication and allow
   // user to access their user page
   const goToUser = () => {
-    Parse.User.current().authenticated = true;
+    // Parse.User.current().authenticated = true;
   }
 
   // Different buttons depending on if the user is authenticated or not
