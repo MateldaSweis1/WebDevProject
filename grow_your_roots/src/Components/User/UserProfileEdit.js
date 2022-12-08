@@ -27,10 +27,6 @@ const ProfileEdit = () => {
             tempUser.email = tempUser.username;
             console.log(tempUser);
             updateUser(tempUser);
-            // .then((newUser)=> {
-            //     if(newUser === user) alert("Success!");
-            //     else alert("Failure")
-            // });
             setAdd(false);
         }
       }, [tempUser, add]);
