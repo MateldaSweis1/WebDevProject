@@ -9,6 +9,7 @@ const AuthForgotPassword = () => {
 
     useEffect(() => {
         if (user && add) {
+            console.log("here");
             checkUsername(user.email);
             setAdd(false);
         }

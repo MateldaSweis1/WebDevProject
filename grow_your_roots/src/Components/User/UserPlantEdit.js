@@ -25,7 +25,9 @@ const Profile = () => {
     useEffect(() => {
         if (newPlant && add) {
             if (newPlant.nickname === "") newPlant.nickname = plant[0].attributes.nickname;
+            console.log(newPlant.fertilizer)
             if (newPlant.fertilizer === "") newPlant.fertilizer = plant[0].attributes.fertilizer;
+            console.log(newPlant.fertilizer)
             if (newPlant.size === "") newPlant.size = plant[0].attributes.size;
             if (newPlant.place === "") newPlant.place = plant[0].attributes.place;
             if (newPlant.light === "") newPlant.light = plant[0].attributes.light;
@@ -76,18 +78,9 @@ const Profile = () => {
             placeholder={plant.get("nickname")}
           />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>Fertilizer</label>
           <br />
-          {/* <input
-            type="textarea"
-            className="form-control"
-            id="fertilizer-input"
-            value={newPlant.fertilizer}
-            onChange={onChange}
-            name="fertilizer"
-            placeholder={plant.get("fertilizer")}
-          /> */}
           <textarea type="textarea"
             className="form-control"
             id="fertilizer-input"
@@ -96,6 +89,19 @@ const Profile = () => {
             name="fertilizer"
             placeholder={plant.get("fertilizer")}
             />
+        </div> */}
+        <div>
+          <label>Fertilizer</label>
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            id="fertilizer-input"
+            value={newPlant.fertilizer}
+            onChange={onChange}
+            name="fertilizer"
+            placeholder={plant.get("fertilizer")}
+          />
         </div>
         <div>
           <label>Size</label>

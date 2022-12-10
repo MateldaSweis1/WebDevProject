@@ -18,6 +18,7 @@ export const createUserPlant = (newUserPlant) => {
   plant.set("place", newUserPlant.place);
   plant.set("category", newUserPlant.category);
   plant.set("size", newUserPlant.size);
+  plant.set("edit", false);
   const plantId = newUserPlant.plant_id;
   plant.set("plant_id", { "__type": "Pointer", "className": "Plant", "objectId": plantId });
   const locStore = JSON.parse(localStorage.getItem("Parse/FnFsABZT3nmw3g8Tx8Jwl0zeDLS3Yso1tTJ6P78R/currentUser"));
@@ -189,11 +190,12 @@ export const setCategory = (id, category) => {
 export const updatePlant = (oldPlant, newPlant) => {
   return setNickname(oldPlant.id, newPlant.nickname).then((plant)=>{
     return setWater(oldPlant.id, newPlant.water).then((plant) => {
+      console.log("Fert:::",newPlant)
       return setFertilizer(oldPlant.id, newPlant.fertiizer).then((Plant) => {
         return setSize(oldPlant.id, newPlant.size).then((plant) => {
           return setPlace(oldPlant.id, newPlant.place).then((plant) => {
             return setLight(oldPlant.id, newPlant.light).then((plant) => {
-              return setCategory(oldPlant.id, newPlant.place).then((plant)=> {
+              return setCategory(oldPlant.id, newPlant.category).then((plant)=> {
                 return plant;
               })
             });
