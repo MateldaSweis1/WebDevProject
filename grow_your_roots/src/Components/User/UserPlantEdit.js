@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import { getAllUserPlants, undoEdit, updatePlant } from "../../Services/UserCRUDServices";
+import { getAllUserPlants, undoEdit, updatePlant, undoAllEdit } from "../../Services/UserCRUDServices";
 
 const Profile = () => {
 
@@ -15,7 +15,7 @@ const Profile = () => {
         category: ""
     });
     const [add, setAdd] = useState(false);
-
+    
     useEffect(()=> {
         getAllUserPlants().then((response) => {
             setPlant(response.filter((res) => (res.attributes.edit === true)));
@@ -52,15 +52,16 @@ const Profile = () => {
         setAdd(true);
     }
     
+
+    if(plant.length > 0){
     return (
         <section>
-          <h1>Edit</h1>
           <div>
           {plant.length > 0 && (
         plant.map(
           (plant) => (
             <div className="each" key={plant.get("nickname")}>
-            <h2>{plant.get("nickname")}</h2>
+            <h1>Edit '{plant.get("nickname")}'</h1>
             <form onSubmit={onSubmit} autoComplete="off">
     {/* Checking to see if the user if logging in or registering */}
     {/* Only display "First Name" and "Last Name" if user is registering*/}
@@ -185,7 +186,19 @@ const Profile = () => {
         ))}
         </div>
         </section>
-    );
+    );} else {
+      return (
+        <div>
+          <h1>Edit</h1>
+          <h3>Reload page to view plant</h3>
+          <Link to="/users">
+                <button onClick={()=> {
+                  undoAllEdit();
+                }}>Back</button>
+            </Link>
+        </div>
+      )
+    }
 }
 
 export default Profile;

@@ -96,6 +96,17 @@ export const undoEdit = (id) => {
   });
 }
 
+export const undoAllEdit = () => {
+  const UserPlants = Parse.Object.extend("UserPlants");
+  const query = new Parse.Query(UserPlants);
+  return query.find().then((results) => {
+    // returns array of UserPlant objects
+    return results.map((res) => {
+      return undoEdit(res.id);
+    });
+  });
+}
+
 export const setNickname = (id, nickname) => {
   const UserPlants = Parse.Object.extend("UserPlants");
   const query = new Parse.Query(UserPlants);
