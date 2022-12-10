@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { getAllUserPlants, undoEdit, updatePlant, undoAllEdit } from "../../Services/UserCRUDServices";
 
+
+// Displaying the form to edit the selected plant
 const Profile = () => {
 
     const [plant, setPlant] = useState([]);
@@ -22,8 +24,10 @@ const Profile = () => {
         })
     }, []);
 
+    // Upating the plant after form submitted
     useEffect(() => {
         if (newPlant && add) {
+            // Setting blank inputs to the current value
             if (newPlant.nickname === "") newPlant.nickname = plant[0].attributes.nickname;
             console.log(newPlant.fertilizer)
             if (newPlant.fertilizer === "") newPlant.fertilizer = plant[0].attributes.fertilizer;
@@ -33,6 +37,7 @@ const Profile = () => {
             if (newPlant.light === "") newPlant.light = plant[0].attributes.light;
             if (newPlant.water === "") newPlant.water = plant[0].attributes.water;
             if (newPlant.category === "") newPlant.category = plant[0].attributes.category;
+            // Update the plant to the new plant
             updatePlant(plant[0], newPlant);
             setAdd(false);
         }
@@ -63,8 +68,6 @@ const Profile = () => {
             <div className="each" key={plant.get("nickname")}>
             <h1>Edit '{plant.get("nickname")}'</h1>
             <form onSubmit={onSubmit} autoComplete="off">
-    {/* Checking to see if the user if logging in or registering */}
-    {/* Only display "First Name" and "Last Name" if user is registering*/}
     <div className="auth-top">
         <div>
           <label>Nickname</label>
@@ -79,18 +82,6 @@ const Profile = () => {
             placeholder={plant.get("nickname")}
           />
         </div>
-        {/* <div className="form-group">
-          <label>Fertilizer</label>
-          <br />
-          <textarea type="textarea"
-            className="form-control"
-            id="fertilizer-input"
-            value={newPlant.fertilizer}
-            onChange={onChange}
-            name="fertilizer"
-            placeholder={plant.get("fertilizer")}
-            />
-        </div> */}
         <div>
           <label>Fertilizer</label>
           <br />

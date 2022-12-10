@@ -201,8 +201,7 @@ export const setCategory = (id, category) => {
 export const updatePlant = (oldPlant, newPlant) => {
   return setNickname(oldPlant.id, newPlant.nickname).then((plant)=>{
     return setWater(oldPlant.id, newPlant.water).then((plant) => {
-      console.log("Fert:::",newPlant)
-      return setFertilizer(oldPlant.id, newPlant.fertiizer).then((Plant) => {
+      return setFertilizer(oldPlant.id, newPlant.fertilizer).then((Plant) => {
         return setSize(oldPlant.id, newPlant.size).then((plant) => {
           return setPlace(oldPlant.id, newPlant.place).then((plant) => {
             return setLight(oldPlant.id, newPlant.light).then((plant) => {

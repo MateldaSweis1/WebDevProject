@@ -6,11 +6,12 @@ const Profile = () => {
 
     const [user, setUser] = useState([])
 
+    // Get user data
     useEffect(()=> {
         setUser(getUser());
-        console.log(user);
     }, []);
 
+    // Displaying currently logged user data
     return (
         <section>
           <h1>My Profile</h1>

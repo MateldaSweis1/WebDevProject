@@ -2,14 +2,16 @@ import React, {useEffect, useState} from "react";
 import { checkUsername, getUser, getUsername, resetPassword } from "../Auth/AuthService";
 import { Link } from "react-router-dom";
 
+// Allow users to reset password using their email/username
 const AuthForgotPassword = () => {
 
     const [user, setUser] = useState([])
     const [add, setAdd] = useState(false);
 
+    // Trigger password reset email
     useEffect(() => {
         if (user && add) {
-            console.log("here");
+            // check that the entered email is valid and send email if so
             checkUsername(user.email);
             setAdd(false);
         }
@@ -28,10 +30,11 @@ const AuthForgotPassword = () => {
         e.preventDefault();
         setAdd(true);
       };
-
+    
+    // Form to enter email to reset password
     return (
         <section>
-          <h1>Enter Your Username:</h1>
+          <h1>Enter Your Email:</h1>
           <div className="ProfileElem">
           <form onSubmit={onSubmitHandler} autoComplete="off">
           <div className="form-group">
