@@ -12,6 +12,11 @@ const UserProfile = () => {
     Parse.User.current().authenticated = true;
   }
 
+
+  const goToProfile = () => {
+    Parse.User.current().authenticated = true;
+  }
+
   const goToBlog = () => {
     Parse.User.current().authenticated = true;
   }
@@ -21,6 +26,10 @@ const UserProfile = () => {
           <div>
           <Link to="/">
             <button onClick={goToHome}>Home</button>
+          </Link>
+
+          <Link to="/users/profile">
+            <button onClick={goToProfile}>Profile</button>
           </Link>
           <Link to="/blog">
             <button onClick={goToBlog}>Blog</button>

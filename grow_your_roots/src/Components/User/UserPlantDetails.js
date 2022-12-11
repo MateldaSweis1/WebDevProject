@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import {
   getAllUserPlants,
   createUserPlant,
-  removeUserPlant
+  removeUserPlant,
+  setEdit
 } from "../../Services/UserCRUDServices";
 import UserPlantForm from "./UserPlantForm";
+import { Link, useNavigate } from "react-router-dom";
 
 //Plant info component, child componenet of Parent.js
 // Includes the plant information passed down from parent as prop
 // Also includes the button with the onClick callback function
 const UserPlantDetails = () => {
 
+    const navigate = useNavigate();
     const [plants, setPlants] = useState([]);
     const [nickname, setNickname] = useState();
     const [newUserPlant, setNewUserPlant] = useState({
@@ -102,7 +105,6 @@ const UserPlantDetails = () => {
     });
   }
   };
-  console.log("inputs: ", newUserPlant);
 
   return (
       <div>
@@ -129,6 +131,12 @@ const UserPlantDetails = () => {
                  >
                    Delete Plant
                  </button>
+                 <Link to="/users/edit">
+                   <button onClick={()=> {
+                     const id = plant.id;
+                     setEdit(id)
+                   }}> Edit Plant</button>
+                  </Link>
             </div>
             )
         ))}
@@ -138,5 +146,3 @@ const UserPlantDetails = () => {
 };
 
 export default UserPlantDetails;
-
-////<img src = {(plant.get("image"))._url} width="250" height="200" />
