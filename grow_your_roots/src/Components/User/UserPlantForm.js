@@ -16,14 +16,9 @@ const UserPlantForm = ({newUserPlant, onChange, onClick}) => {
       <option value="Coleus">Coleus</option>
       <option value="Jade Plant">Jade Plant</option>
       </select><br /><br />
-    Light:
-    <select name="light" onChange={onChange} value={newUserPlant.light}>
-        <option value="indoor">Indoor</option>
-        <option value="outdoor">Outdoor</option>
-        <option value="either">Either</option>
-    </select><br /><br />
+      <p>Upload an image: <input type="file" accept="image/jpeg, image/png, image/jpg" name="image" id="uploadedPlantImage" onChange={onChange}  required/></p>
 
-    <input type="submit" value="Save Plant" onClick={onClick}/>
+    <input type="submit" value="Save Plant" onClick={onClick}/><br /><br />
     </form>
     </div>
   );
