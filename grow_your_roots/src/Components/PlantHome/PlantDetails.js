@@ -21,10 +21,6 @@ const PlantDetails = () => {
     });
   }, []);
 
-//   const onPlantClick = () => {
-  //   alert(`You added a new plant!`);
-  // }
-
   return (
     <div>
       <h1>Learn about these plants:</h1>

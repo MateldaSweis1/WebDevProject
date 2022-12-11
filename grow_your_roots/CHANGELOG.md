@@ -3,6 +3,21 @@ All noteable changes to the project are noted in this file
 
 # [Unreleased]
 
+# [0.4.0] 12-10-2022
+# Added
+- 'Forgot Password' pipeline from login page
+- User profile page off of the user page
+- Edit page for the profile details
+- Edit page for plant details
+- Protected routes to all pages added off the user page
+
+# Changed
+
+# Removed
+
+# Fixed
+
+
 # [0.3.0] 11-09-2022
 # Added
 - Log in and registration functionality.
