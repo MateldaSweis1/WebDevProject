@@ -10,12 +10,23 @@ All noteable changes to the project are noted in this file
 - Edit page for the profile details
 - Edit page for plant details
 - Protected routes to all pages added off the user page
+- Blog page where users can write comments and see what other users wrote
+- Blog comments automatically track what user made the comment
 
 # Changed
+- Input form on users page allows users to upload an image of their personal plant
+- Input form on users page only requires user to submit nickname, plant type,
+  and image of their plant. The other attributes related to the plant get
+  autofilled into the database based off what type of plant it is.
 
 # Removed
 
 # Fixed
+- Plant_owned attribute in the UserPlants class of the database
+  now correctly references owner of the plant
+- Plant_id attribute in the UserPlants class of the database
+  now correctly references a plant type that is stored in the Plant class
+
 
 
 # [0.3.0] 11-09-2022
@@ -46,10 +57,9 @@ All noteable changes to the project are noted in this file
 - The user can dynamically add and delete plants on the user page.
 
 # Changed
-- The plant data is no longer being stored in a local JSON file. 
+- The plant data is no longer being stored in a local JSON file.
 - html <a> tags were replaced with React links to navigate between pages.
 
 # Removed
 - The plant data in the JSON file has been removed from the project.
 - The quick add functionality has been removed from the home page since the user can add plants on the user page.
-

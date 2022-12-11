@@ -113,9 +113,10 @@ const UserPlantDetails = () => {
           (plant) => (
             <div className="each" key={plant.get("nickname")}>
             <h3>{plant.get("nickname")}</h3>
+            <h3>{plant["attributes"]["plant_id"]["id"]}</h3>
             <img src = {plant["attributes"]["image"]._url}  width="250" height="200" />
-
               <ul className="plantDetails">
+              <h4>Here are things to keep in mind when caring for this plant: </h4>
                 <li>{plant["attributes"]["light"]}</li>
                 <li>{plant["attributes"]["water"]}</li>
                 <li>{plant["attributes"]["fertilizer"]}</li>

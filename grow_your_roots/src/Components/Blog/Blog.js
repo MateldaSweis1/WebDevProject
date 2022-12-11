@@ -5,9 +5,9 @@ import {
   getAllPosts,
   createPost
 } from "../../Services/BlogCRUDServices";
-//import { getUser } from "../Auth/AuthService";
-// import { Link } from "react-router-dom";
-// import UserPlantDetails from "./UserPlantDetails";
+import HomeUserFooter from "../PlantHome/HomeUserFooter.js";
+import Header from "../Header/Header.js";
+
 
 const Blog = () => {
 
@@ -62,9 +62,10 @@ const Blog = () => {
     });
   };
 
-//<h4>{post.get("user")}</h4>
+
     return (
         <div>
+        <Header />
           <h1>The Grow Your Roots Community</h1>
           <PostForm newPost={newPost} onClick={onClickHandler} onChange={onChangeHandler}/>
 
@@ -77,6 +78,7 @@ const Blog = () => {
               </div>
             )
           ))}
+          <HomeUserFooter />
         </div>
     );
 }
