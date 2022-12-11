@@ -15,14 +15,15 @@ const UserPlantDetails = () => {
     const [nickname, setNickname] = useState();
     const [newUserPlant, setNewUserPlant] = useState({
       nickname: "",
-      plant_id: "",
+      plant_id: "Pentas",
       light: "",
       water: "",
       fertilizer: "",
       place: "",
       category: "",
       size: "",
-      plant_owner: ""
+      plant_owner: "",
+      image: ""
     });
 
     //const [numPlants, setNumPlants] = useState(1);
@@ -72,6 +73,26 @@ const UserPlantDetails = () => {
   // Handler to track changes to the child input text
   const onChangeHandler = (e) => {
     e.preventDefault();
+    //console.log(e.)
+    if (e.target.id =='uploadedPlantImage') {
+
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+
+      reader.onload = function() {
+        const uploaded_image = reader.result;
+
+        const name = e.target.name;
+        const newValue = uploaded_image;
+
+      setNewUserPlant({
+        ...newUserPlant,
+        [name]: newValue
+      });
+      };
+
+    }
+    else {
     console.log(e.target.value);
     const {name, value: newValue}  = e.target;
 
@@ -79,6 +100,7 @@ const UserPlantDetails = () => {
       ...newUserPlant,
       [name]: newValue
     });
+  }
   };
   console.log("inputs: ", newUserPlant);
 
@@ -89,6 +111,17 @@ const UserPlantDetails = () => {
           (plant) => (
             <div className="each" key={plant.get("nickname")}>
             <h3>{plant.get("nickname")}</h3>
+            <img src = {plant["attributes"]["image"]._url}  width="250" height="200" />
+
+              <ul className="plantDetails">
+                <li>{plant["attributes"]["light"]}</li>
+                <li>{plant["attributes"]["water"]}</li>
+                <li>{plant["attributes"]["fertilizer"]}</li>
+                <li>{plant["attributes"]["place"]}</li>
+                <li>{plant["attributes"]["category"]}</li>
+                <li>{plant["attributes"]["size"]}</li>
+              </ul>
+
             <button
                    onClick={(e) => {
                      setRemove(plant.id);

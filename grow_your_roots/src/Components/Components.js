@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import UserProfile from "./User/User";
 import Home from "./PlantHome/PlantHome";
+import Blog from "./Blog/Blog";
 import AuthModule from "./Auth/Auth";
 import AuthRegister from "./Auth/AuthRegister";
 import AuthLogin from "./Auth/AuthLogin";
@@ -17,9 +18,10 @@ const Components = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} /> 
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/users" element={
-          <ProtectedRoute path="/users" element={UserProfile} /> } 
+          <ProtectedRoute path="/users" element={UserProfile} /> }
         />
         <Route path="/auth" element={<AuthModule />} />
         <Route path="/auth/register" element={<AuthRegister />} />

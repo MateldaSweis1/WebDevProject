@@ -19,7 +19,6 @@ export const createUserPlant = async (newUserPlant) => {
   let parseQueryPlantType = new Parse.Query('Plant');
   parseQueryPlantType.contains('plant_id', newUserPlant.plant_id);
   const plantTypeInfo = await parseQueryPlantType.find();
-  console.log(plantTypeInfo[0]['attributes']['light']);
 
   plant.set("nickname", newUserPlant.nickname);
   plant.set("light", plantTypeInfo[0]['attributes']['light']);
@@ -34,9 +33,16 @@ export const createUserPlant = async (newUserPlant) => {
   const userId = locStore.objectId;
   plant.set("plant_owner", { "__type": "Pointer", "className": "_User", "objectId": userId });
 
-
-  //plant.set("image"._url, image);
-
+  //Set image
+  try{
+  let myFile = newUserPlant.image.toString('base64');
+  const  parseFile = new Parse.File("imageFile.jpeg", {base64: myFile});
+	plant.set("image", parseFile);
+  }
+  catch {
+    console.log("Error uploading image");
+  }
+  //Write results for plant object into database
   return plant.save().then((result) => {
     // returns new plant object
     return result;
@@ -55,11 +61,22 @@ export const getUserPlantById = (id) => {
 
 // READ operation - get all plants in Parse class UserPlants
 export const getAllUserPlants = () => {
+
+  //function to check if ownedPlant is owned by current user
+  function checkUser(input) {
+    //get ID of current user logged in
+    const locStore = JSON.parse(localStorage.getItem("Parse/FnFsABZT3nmw3g8Tx8Jwl0zeDLS3Yso1tTJ6P78R/currentUser"));
+    const userId = locStore.objectId;
+
+    return userId == input['attributes']['plant_owner']['id'];
+  }
+
   const UserPlants = Parse.Object.extend("UserPlants");
   const query = new Parse.Query(UserPlants);
   return query.find().then((results) => {
-    // returns array of UserPlant objects
-    return results;
+    // returns array of UserPlant objects that belong to current logged in user
+    const filteredResults = results.filter(checkUser);
+    return filteredResults;
   });
 };
 /* Might later want to implement an update operation
