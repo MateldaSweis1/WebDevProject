@@ -12,12 +12,19 @@ const UserProfile = () => {
     Parse.User.current().authenticated = true;
   }
 
+  const goToProfile = () => {
+    Parse.User.current().authenticated = true;
+  }
+
     return (
         <section>
           <h1>Grow My Roots</h1>
           <div>
           <Link to="/">
             <button onClick={goToHome}>Home</button>
+          </Link>
+          <Link to="/users/profile">
+            <button onClick={goToProfile}>Profile</button>
           </Link>
         </div>
         <div>

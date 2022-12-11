@@ -4,7 +4,6 @@ import { checkUser } from "./AuthService";
 
 
 const ProtectedRoute = ({ element: Component, ...rest }) => {
-  console.log("element: ", Component);
   const navigate = useNavigate();
 
   const goBackHandler = () => {
@@ -17,7 +16,6 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
     return (
       <div>
         <p>Unauthorized!</p> <button onClick={goBackHandler}>Go Back.</button>
-        {navigate("/auth")}
       </div>
 
     );

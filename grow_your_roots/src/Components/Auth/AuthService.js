@@ -39,7 +39,123 @@ export const loginUser = (currUser) => {
     });
 };
 
+export const getUsername = (username) => {
+  const user = new Parse.User();
+  const query = new Parse.Query(user);
+  return query.get(username).then((user)=> {
+    return true;
+  }).catch((error) => {
+    alert(`Error: username does not exist`);
+    return false;
+  });
+}
+
+export const resetPassword = async function (email) {
+  try {
+    await Parse.User.requestPasswordReset(email);
+    alert("See email to reset password!");
+    return true;
+  } catch(error) {
+    alert(`Error! ${error}`);
+    return false;
+  }
+}
+
+export const checkUsername = (username) => {
+  const users = Parse.Object.extend("User");
+  const query = new Parse.Query(users);
+  return query.find().then((results) => {
+    const usernames = results.map((res) => res.attributes.username);
+    if (usernames.includes(username)) return resetPassword(username);
+    else {
+      alert("Username not valid!");
+      return false
+    };
+  })
+}
+
 // Check the authentication status of the user
 export const checkUser = () => {
   return Parse.User.current()?.authenticated;
 };
+
+export const getUser = () => {
+  return Parse.User.current().attributes;
+}
+
+export const updateUsername = (username) => {
+  console.log(username)
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  console.log(id);
+  return query.get(id).then((user) => {
+    user.set("username", username);
+    user.save();
+    return user;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const updateEmail = (email) => {
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  return query.get(id).then((user) => {
+    user.set("email", email);
+    user.save();
+    return user;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const updateFirstName = (firstName) => {
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  return query.get(id).then((user) => {
+    user.set("firstName", firstName);
+    user.save();
+    return user;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const updateLastName = (lastName) => {
+  console.log("lastName::::",lastName)
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  const id = Parse.User.current().id;
+  console.log(id);
+  return query.get(id).then((user) => {
+    console.log(user)
+    user.set("lastName", lastName);
+    user.save();
+    return user;
+  }).catch((error) => {
+    alert("Error: ", error);
+    return false;
+  });
+}
+
+export const updateUser = (newUser) => {
+
+  return updateUsername(newUser.username).then((user)=>{
+    return updateEmail(newUser.username).then((user) => {
+      return updateFirstName(newUser.firstName).then((user) => {
+        return updateLastName(newUser.lastName).then((user) => {
+          return user;
+        });
+      })
+    })
+  }).catch((error) => {
+    console.log("Error: ", error);
+    return false;
+  })
+}

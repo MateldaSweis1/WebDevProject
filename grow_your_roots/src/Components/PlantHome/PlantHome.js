@@ -5,6 +5,7 @@ import "../Styling/PlantMain.css";
 import Header from "../Header/Header";
 import Parse from "parse";
 import HomeUserFooter from "./HomeUserFooter";
+import { checkUser } from "../Auth/AuthService";
 
 // Home component
 // Includes header of the homepage, navigation link to the user page, and the PlantDetails component
